@@ -51,6 +51,18 @@
   opacity: 0.8 !important;
 }
 
+/* Stretched link: the whole card is clickable */
+.link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.link:focus-visible {
+  outline: 1px solid var(--phosphor-bright);
+  outline-offset: -4px;
+}
+
 /* Hover video preview */
 .video {
   position: absolute;

@@ -14,6 +14,7 @@ interface WorkCardProps {
   description?: string;
   tags: string[];
   videoSrc?: string;
+  href?: string;        // whole card becomes a link (opens in a new tab)
 }
 
 const sizeClass: Record<CardSize, string> = {
@@ -33,6 +34,7 @@ export function WorkCard({
   description,
   tags,
   videoSrc,
+  href,
 }: WorkCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -88,6 +90,16 @@ export function WorkCard({
           )}
         </div>
       </div>
+
+      {href && (
+        <a
+          className={styles.link}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${title} — открыть проект`}
+        />
+      )}
     </article>
   );
 }

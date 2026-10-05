@@ -57,12 +57,14 @@ export function Projects() {
             description="Коммерческий сайт для производителя пиломатериалов «Кьярда»"
             tags={['REACT', 'REST API', 'CRM', 'LIVE ↗']}
             videoSrc="/works/kyarda.mp4"
+            href="https://kasstel.github.io/Kyarda/"
           />
           <WorkCard index={1} size="lg" number="№ 002" caseLabel="CASE-B"
             title="LOVE MAP"
             description="Интерактивная карта совместных воспоминаний для пары: метки с фото и категориями, счётчик дней вместе и два связанных аккаунта по инвайт-коду."
             tags={['MAP', 'PHOTO', 'INVITE-CODE']}
             videoSrc="/works/loveMap.mp4"
+            href="https://kasstel.github.io/LoveMap/"
           />
         </div>
       </section>
