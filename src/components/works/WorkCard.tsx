@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, type PointerEvent } from 'react';
 import { WorkCardCanvas } from './WorkCardCanvas';
 import styles from './WorkCard.module.css';
 
@@ -38,17 +38,35 @@ export function WorkCard({
 }: WorkCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Preview plays only while the card is hovered
-  const playPreview = () => {
+  // Mouse: preview plays only while the card is hovered
+  const playPreview = (e: PointerEvent) => {
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || e.pointerType !== 'mouse') return;
     v.currentTime = 0;
     v.play().catch(() => { /* interrupted by a quick leave */ });
   };
 
-  const stopPreview = () => {
+  const stopPreview = (e: PointerEvent) => {
+    if (e.pointerType !== 'mouse') return;
     videoRef.current?.pause();
   };
+
+  // Touch devices have no hover: play while the card is on screen instead
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v || !window.matchMedia('(hover: none)').matches) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        v.play().catch(() => { /* autoplay blocked, e.g. power saving mode */ });
+      } else {
+        v.pause();
+      }
+    }, { threshold: 0.5 });
+    observer.observe(v);
+
+    return () => observer.disconnect();
+  }, [videoSrc]);
 
   return (
     <article

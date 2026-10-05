@@ -79,6 +79,13 @@
   opacity: 1;
 }
 
+/* Touch devices: no hover, the preview is always visible and autoplays in view */
+@media (hover: none) {
+  .video {
+    opacity: 1;
+  }
+}
+
 /* Gradient overlay */
 .overlay {
   position: absolute;
