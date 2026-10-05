@@ -50,7 +50,7 @@ export function Topbar() {
         <span>RT-12ms</span>
         <span>{coords}</span>
       </div>
-      <div className={styles.center}>LUNEV.N / Досье</div>
+      <div className={styles.center}>LUNEV N. / Portfolio</div>
       <div className={styles.right}>
         <span>{clock}</span>
         <span>CH 03 // SECURE</span>

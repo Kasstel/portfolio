@@ -5,18 +5,20 @@
 
 .contact {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* minmax(0, …) lets columns shrink below their content width */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 20px;
 }
 
 .card {
   padding: 24px 28px !important;
   font-size: var(--fs-base);
+  min-width: 0;
 }
 
 .cRow {
   display: grid;
-  grid-template-columns: 100px 1fr auto;
+  grid-template-columns: 100px minmax(0, 1fr) auto;
   gap: 16px;
   padding: 10px 0;
   border-bottom: 1px dashed var(--phosphor-ghost);
@@ -32,6 +34,7 @@
 
 .v {
   color: var(--phosphor-bright);
+  overflow-wrap: anywhere;
 }
 
 .copy {
@@ -71,6 +74,7 @@
   color: var(--text);
   line-height: 1.7;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
   margin-top: 8px;
 }
 
@@ -84,6 +88,22 @@
 
 @media (max-width: 1100px) {
   .contact {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .card {
+    padding: 20px 16px !important;
+  }
+
+  /* Label on its own line, value + copy button below */
+  .cRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 12px;
+  }
+
+  .k {
+    grid-column: 1 / -1;
   }
 }

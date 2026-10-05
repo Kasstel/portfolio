@@ -22,7 +22,7 @@ interface PortraitCanvasProps {
  *
  * If no `src` or image fails to load → falls back to procedural silhouette.
  */
-export function PortraitCanvas({ src }: PortraitCanvasProps) {
+export function PortraitCanvas({ src, className }: PortraitCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export function PortraitCanvas({ src }: PortraitCanvasProps) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let pW = 0;
     let pH = 0;
-    let running = true;
+    let rafId = 0;
 
     // ASCII density ramp (dark → bright)
     const ramp = ' .`-:;~+*=xX%#@';
@@ -72,11 +72,11 @@ export function PortraitCanvas({ src }: PortraitCanvasProps) {
     }
 
     function resize() {
-      const rect = canvas!.getBoundingClientRect();
-      pW = canvas!.width = rect.width * dpr;
-      pH = canvas!.height = rect.height * dpr;
-      canvas!.style.width = rect.width + 'px';
-      canvas!.style.height = rect.height - 30   +'px';
+      // Display size comes from CSS — only the drawing buffer is synced here
+      pW = canvas!.width = Math.round(canvas!.clientWidth * dpr);
+      pH = canvas!.height = Math.round(canvas!.clientHeight * dpr);
+      // Resizing clears the buffer, so repaint right away to avoid a blank frame
+      draw(performance.now());
     }
 
     /**
@@ -139,6 +139,16 @@ export function PortraitCanvas({ src }: PortraitCanvasProps) {
       const cols = Math.floor(pW / cellW);
       const rows = Math.floor(pH / cellH);
 
+      // Cover-fit: visible fraction of the photo per axis, so it is cropped
+      // (not stretched) — same as object-fit: cover on the hover <img>
+      let fw = 1;
+      let fh = 1;
+      if (imageLoaded) {
+        const scale = Math.max(pW / imgW, pH / imgH);
+        fw = pW / (imgW * scale);
+        fh = pH / (imgH * scale);
+      }
+
       for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
           const x = col * cellW;
@@ -148,13 +158,14 @@ export function PortraitCanvas({ src }: PortraitCanvasProps) {
 
           if (imageLoaded) {
             // Sample photo brightness at this cell position
-            const nx = col / cols;
-            const ny = row / rows;
+            // Centered horizontally, anchored to the top (object-position: center top)
+            const nx = 0.5 + (col / cols - 0.5) * fw;
+            const ny = (row / rows) * fh;
             v = samplePhoto(nx, ny);
 
             // Apply effects
             // Breathing modulation
-            v += Math.sin(time * 0.8 + y * 0.003) * 0.03;
+            v += Math.sin(time * 0.8 + y * 0.003) * 0.4;
             // Scanline darkening every 3rd row
             if (row % 3 === 0) v *= 0.85;
             // Slight contrast boost
@@ -241,23 +252,35 @@ export function PortraitCanvas({ src }: PortraitCanvasProps) {
 
     function loop(t: number) {
       draw(t);
-      if (running) requestAnimationFrame(loop);
+      rafId = requestAnimationFrame(loop);
     }
 
-    resize();
-    window.addEventListener('resize', resize);
-    requestAnimationFrame(loop);
+    function start() {
+      if (!rafId) rafId = requestAnimationFrame(loop);
+    }
+
+    function stop() {
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+    }
+
+    // Follow the panel size (not just the window)
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(canvas);
+
+    // Animate only while the canvas is on screen
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) start();
+      else stop();
+    });
+    visibilityObserver.observe(canvas);
 
     return () => {
-      running = false;
-      window.removeEventListener('resize', resize);
+      stop();
+      resizeObserver.disconnect();
+      visibilityObserver.disconnect();
     };
   }, [src]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{ width: '100%', height: '100%', display: 'block', minHeight: 480 }}
-    />
-  );
+  return <canvas ref={canvasRef} className={className} />;
 }

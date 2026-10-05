@@ -43,3 +43,11 @@
   letter-spacing: 0.1em;
   font-feature-settings: 'tnum';
 }
+
+@media (max-width: 680px) {
+  .head,
+  .left {
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+}

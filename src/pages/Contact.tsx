@@ -60,16 +60,16 @@ export function Contact() {
             <CopyButton value="+79803705010" />
           </div>
           <div className={styles.cRow}>
-            <span className={styles.k}>LIVE</span>
+            <span className={styles.k}>Github Profile</span>
             <a
-              href="https://kasstel.github.io/Kyarda/"
+              href="https://github.com/Kasstel"
               target="_blank"
               rel="noopener"
               className={`${styles.v} glitchable`}
             >
-              kasstel.github.io/Kyarda ↗
+              github.com/Kasstel ↗
             </a>
-            <CopyButton value="https://kasstel.github.io/Kyarda/" />
+            <CopyButton value="https://github.com/Kasstel" />
           </div>
           <div className={styles.cRow} style={{ border: 0 }}>
             <span className={styles.k}>AVAILABLE</span>
@@ -80,8 +80,7 @@ export function Contact() {
           </div>
 
           <div className={styles.note}>
-            Пишите — без долгих вступлений. Коротко о задаче, сроках, бюджете.
-            Если подходит — подключаюсь в течение суток. Если нет — отвечу почему.
+            Пришлите задачу, сроки и бюджет. В течение суток дам оценку и план работы.
           </div>
         </Panel>
 
