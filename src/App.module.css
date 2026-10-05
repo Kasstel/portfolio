@@ -1,0 +1,40 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+  padding: 0 24px 60px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.booting {
+  opacity: 0;
+}
+
+.revealed {
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.foot {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--phosphor-ghost);
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: var(--phosphor-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 680px) {
+  .app {
+    padding: 0 12px 40px;
+  }
+
+  .foot {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,106 @@
+/* ============================================
+   CRT OVERLAY LAYERS
+   All fixed, pointer-events: none, decorative.
+   ============================================ */
+
+/* Layer 1 — Phosphor glow (z: 199) */
+.glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-crt-glow);
+  background: radial-gradient(
+    ellipse 120% 80% at 50% 50%,
+    rgba(79, 195, 255, 0.04),
+    transparent 70%
+  );
+}
+
+/* Layer 2 — Static scanlines (z: 200) */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-scanlines);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, calc(var(--scanline-opacity) * 1)) 3px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+/* Layer 3 — Vignette / dark edges (z: 201) */
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-vignette);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0.6) 85%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* Layer 4 — Moving scan band (z: 202) */
+.scanMoving {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: var(--z-scan-move);
+  background: linear-gradient(
+    to bottom,
+    rgba(79, 195, 255, 0) 0%,
+    rgba(79, 195, 255, 0.03) 45%,
+    rgba(79, 195, 255, 0.08) 50%,
+    rgba(79, 195, 255, 0.03) 55%,
+    rgba(79, 195, 255, 0) 100%
+  );
+  animation: scanmove 7s linear infinite;
+  opacity: calc(var(--scanline-opacity) * 2);
+}
+
+@keyframes scanmove {
+  0%   { transform: translateY(-120px); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Layer 5 — Live noise canvas (z: 203) */
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-noise);
+  opacity: var(--noise-opacity);
+  mix-blend-mode: overlay;
+}
+
+/* Layer 6 — Rolling white band (z: 204) */
+.roll {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-crt-roll);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 48%,
+    rgba(255, 255, 255, 0.02) 49%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.02) 51%,
+    transparent 52%,
+    transparent 100%
+  );
+  animation: roll 14s linear infinite;
+}
+
+@keyframes roll {
+  0%   { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
+}

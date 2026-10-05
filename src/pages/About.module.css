@@ -1,0 +1,173 @@
+.section {
+  position: relative;
+  padding: 48px 0 24px;
+}
+
+/* ─── SKILLS GRID ─── */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+}
+
+.skillsPanel {
+  padding: 22px 24px !important;
+  min-height: 200px;
+}
+
+.skillsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 40px;
+  font-size: 12px;
+}
+
+.skillRow {
+  display: grid;
+  grid-template-columns: 110px 1fr 40px;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--phosphor-ghost);
+}
+
+.skillName {
+  color: var(--phosphor-bright);
+  letter-spacing: 0.05em;
+}
+
+.skillValue {
+  font-feature-settings: 'tnum';
+  color: var(--phosphor);
+  text-align: right;
+  font-size: var(--fs-sm);
+}
+
+.toolTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.toolTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid var(--phosphor-dim);
+  color: var(--phosphor-bright);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(79, 195, 255, 0.02);
+}
+
+.investigating {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--phosphor-ghost);
+}
+
+.investList {
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ─── TIMELINE ─── */
+.timeline {
+  position: relative;
+  padding: 24px 0 10px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 120px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--phosphor-ghost);
+}
+
+.tlEntry {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 28px;
+  padding: 14px 0;
+  position: relative;
+}
+
+.tlEntry::before {
+  content: '';
+  position: absolute;
+  left: 116px;
+  top: 21px;
+  width: 9px;
+  height: 9px;
+  background: var(--phosphor);
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px rgba(79, 195, 255, 0.6);
+}
+
+.tlDate {
+  font-family: var(--font-mono);
+  color: var(--phosphor);
+  font-size: var(--fs-base);
+  letter-spacing: 0.1em;
+  /* line-height matches the h4 so the date, marker and title share one row */
+  line-height: 22px;
+  padding-right: 20px;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 6px rgba(79, 195, 255, 0.3);
+}
+
+.tlBody h4 {
+  font-family: var(--font-crt);
+  font-size: var(--fs-xl);
+  color: var(--phosphor-bright);
+  letter-spacing: 0.08em;
+  line-height: 22px;
+  text-shadow: 0 0 8px rgba(79, 195, 255, 0.4);
+  margin-bottom: 4px;
+}
+
+.tlOrg {
+  font-size: var(--fs-sm);
+  color: var(--phosphor-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.tlDesc {
+  margin-top: 8px;
+  color: var(--text-dim);
+  max-width: 70ch;
+  font-size: 12px;
+}
+
+/* ─── LOG WINDOW LINES ─── */
+.wLine {
+  line-height: 1.6;
+  font-size: 12px;
+}
+
+.pr { color: var(--green); }
+.arg { color: var(--phosphor-bright); }
+.out { color: var(--text-dim); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1100px) {
+  .skillsGrid { grid-template-columns: 1fr; }
+
+  .tlEntry { grid-template-columns: 100px 1fr; gap: 16px; }
+  .timeline::before { left: 100px; }
+  .tlEntry::before { left: 96px; }
+  .tlDate { padding-right: 14px; font-size: var(--fs-sm); }
+}
+
+@media (max-width: 680px) {
+  .skillsList { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,89 @@
+.section {
+  position: relative;
+  padding: 48px 0 24px;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  padding: 24px 28px !important;
+  font-size: var(--fs-base);
+}
+
+.cRow {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--phosphor-ghost);
+  align-items: center;
+}
+
+.k {
+  color: var(--phosphor-dim);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: var(--fs-sm);
+}
+
+.v {
+  color: var(--phosphor-bright);
+}
+
+.copy {
+  font-size: var(--fs-xs);
+  color: var(--phosphor-dim);
+  border: 1px solid var(--phosphor-ghost);
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  background: none;
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+}
+
+.copy:hover {
+  border-color: var(--phosphor);
+  color: var(--phosphor-bright);
+}
+
+.copyOk {
+  color: var(--green) !important;
+  border-color: var(--green) !important;
+}
+
+.note {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--phosphor-ghost);
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.term {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  margin-top: 8px;
+}
+
+.pr {
+  color: var(--green);
+}
+
+.termDim {
+  color: var(--text-dim);
+}
+
+@media (max-width: 1100px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
+}

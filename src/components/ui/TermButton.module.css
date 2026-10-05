@@ -1,0 +1,27 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid var(--phosphor-dim);
+  color: var(--phosphor-bright);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all var(--duration-fast);
+  background: rgba(79, 195, 255, 0.02);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  border-color: var(--phosphor);
+  background: rgba(79, 195, 255, 0.1);
+  box-shadow: 0 0 16px rgba(79, 195, 255, 0.3), inset 0 0 8px rgba(79, 195, 255, 0.15);
+  color: #fff;
+}
+
+.caret {
+  color: var(--phosphor);
+}

@@ -1,0 +1,45 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+  border-bottom: 1px dashed var(--phosphor-ghost);
+  padding-bottom: 8px;
+}
+
+.left {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+
+.index {
+  font-family: var(--font-crt);
+  font-size: var(--fs-3xl);
+  color: var(--phosphor);
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(79, 195, 255, 0.5);
+}
+
+.title {
+  font-family: var(--font-crt);
+  font-size: 32px;
+  letter-spacing: 0.15em;
+  color: var(--phosphor-bright);
+  text-transform: uppercase;
+}
+
+.jp {
+  font-family: var(--font-jp);
+  font-size: var(--fs-base);
+  color: var(--phosphor-dim);
+  letter-spacing: 0.1em;
+}
+
+.right {
+  font-size: var(--fs-xs);
+  color: var(--phosphor-dim);
+  text-align: right;
+  letter-spacing: 0.1em;
+  font-feature-settings: 'tnum';
+}

@@ -1,0 +1,75 @@
+/* ============================================
+   DESIGN TOKENS — Industrial/Cyberpunk HUD
+   Matched to LUNEV.N reference design
+   ============================================ */
+
+:root {
+  /* --- Colors (from original) --- */
+  --bg:              #000000;
+  --bg-raised:       #030608;
+  --bg-panel:        rgba(10, 22, 30, 0.35);
+
+  --phosphor:        #4fc3ff;
+  --phosphor-dim:    #2a7a9a;
+  --phosphor-ghost:  #1a3a4a;
+  --phosphor-bright: #e8f7ff;
+
+  --red:             #ff3860;
+  --amber:           #ffb347;
+  --green:           #79e4a0;
+
+  --text:            #c7e6f5;
+  --text-dim:        #5a8ba0;
+  --text-muted:      #2e5566;
+
+  /* --- Typography --- */
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --font-crt:  'VT323', var(--font-mono);
+  --font-jp:   'Noto Sans JP', var(--font-mono);
+
+  /* --- Sizing --- */
+  --fs-xs:    10px;
+  --fs-sm:    11px;
+  --fs-base:  13px;
+  --fs-md:    14px;
+  --fs-lg:    18px;
+  --fs-xl:    22px;
+  --fs-2xl:   28px;
+  --fs-3xl:   38px;
+  --fs-4xl:   64px;
+  --fs-hero:  clamp(72px, 11vw, 156px);
+
+  /* --- Spacing --- */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  14px;
+  --space-lg:  20px;
+  --space-xl:  28px;
+  --space-2xl: 36px;
+  --space-3xl: 48px;
+  --space-4xl: 60px;
+
+  /* --- Z-index layers --- */
+  --z-boot:      1000;
+  --z-tweaks:    500;
+  --z-crt-roll:  204;
+  --z-noise:     203;
+  --z-scan-move: 202;
+  --z-vignette:  201;
+  --z-scanlines: 200;
+  --z-crt-glow:  199;
+  --z-header:    50;
+  --z-win:       30;
+  --z-win-top:   40;
+
+  /* --- CRT Effects (tweakable via Tweaks panel) --- */
+  --scanline-opacity: 0.35;
+  --noise-opacity:    0.08;
+  --glitch:           1;
+  --type-speed:       1;
+
+  /* --- Transitions --- */
+  --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast:  150ms;
+  --duration-base:  300ms;
+}

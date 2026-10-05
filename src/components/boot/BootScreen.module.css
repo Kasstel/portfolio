@@ -1,0 +1,119 @@
+.boot {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: var(--z-boot);
+  padding: 40px 56px;
+  color: var(--phosphor);
+  font-family: var(--font-mono);
+  font-size: var(--fs-base);
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--phosphor-ghost);
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  font-size: var(--fs-sm);
+  color: var(--phosphor-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.big {
+  font-family: var(--font-crt);
+  font-size: 84px;
+  line-height: 0.9;
+  letter-spacing: 0.05em;
+  color: var(--phosphor-bright);
+  text-shadow:
+    0 0 12px rgba(79, 195, 255, 0.6),
+    0 0 32px rgba(79, 195, 255, 0.3);
+  margin-top: 32px;
+}
+
+.progress {
+  margin-top: 24px;
+  font-size: var(--fs-sm);
+  color: var(--phosphor-dim);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.bar {
+  flex: 1;
+  height: 10px;
+  border: 1px solid var(--phosphor-ghost);
+  position: relative;
+  overflow: hidden;
+}
+
+.bar::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--phosphor) 0 4px,
+    transparent 4px 6px
+  );
+  width: var(--p, 0%);
+  transition: width 0.2s linear;
+}
+
+.stream {
+  white-space: pre-wrap;
+  line-height: 1.45;
+  margin-top: 24px;
+  text-shadow: 0 0 8px rgba(79, 195, 255, 0.3);
+}
+
+/* Colored spans inside stream (set via dangerouslySetInnerHTML) */
+.stream :global(.ok)   { color: #79e4a0; }
+.stream :global(.warn) { color: var(--amber); }
+.stream :global(.err)  { color: var(--red); }
+.stream :global(.br)   { color: var(--phosphor-bright); }
+
+.dim {
+  color: var(--phosphor-dim);
+}
+
+.bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 56px;
+  right: 56px;
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: var(--phosphor-dim);
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 680px) {
+  .boot {
+    padding: 24px 20px;
+  }
+
+  .big {
+    font-size: 48px;
+  }
+
+  .bottom {
+    left: 20px;
+    right: 20px;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
