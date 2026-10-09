@@ -96,7 +96,7 @@ export function About() {
       <section className={styles.section} id="timeline" style={{ position: 'relative' }}>
         <SectionHead
           index="05"
-          title="Мой Путь"
+          title="Resume"
           jp="経歴 / タイムライン"
           rightTop="Первый вход: 2023"
           rightBottom="Крайний: 2026"
