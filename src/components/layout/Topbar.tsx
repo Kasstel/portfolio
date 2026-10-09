@@ -8,14 +8,14 @@ export function Topbar() {
   const mx = useRef(0);
   const my = useRef(0);
 
-  // Live UTC clock
+  // Live Moscow clock (MSK = UTC+3, no DST)
   useEffect(() => {
     function update() {
-      const d = new Date();
+      const d = new Date(Date.now() + 3 * 60 * 60 * 1000);
       const pad = (n: number) => String(n).padStart(2, '0');
       setClock(
         `${d.getUTCFullYear()}.${pad(d.getUTCMonth() + 1)}.${pad(d.getUTCDate())} ` +
-        `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())} UTC`
+        `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())} MSK`
       );
     }
     update();

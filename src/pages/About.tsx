@@ -73,19 +73,19 @@ export function About() {
 
           {/* Toolchain */}
           <Panel label="TOOLCHAIN" className={styles.skillsPanel}>
-            <h4 className="mono-xs" style={{ marginBottom: 10 }}>DAILY DRIVERS</h4>
+            <h4 className="mono-xs" style={{ marginBottom: 10 }}>РАБОЧИЕ ИНСТРУМЕНТЫ</h4>
             <div className={styles.toolTags}>
               {TOOLS.map(t => (
                 <span key={t} className={styles.toolTag}>{t}</span>
               ))}
             </div>
             <div className={styles.investigating}>
-              <h4 className="mono-xs" style={{ marginBottom: 8 }}>CURRENTLY INVESTIGATING</h4>
+              <h4 className="mono-xs" style={{ marginBottom: 8 }}>СЕЙЧАС ИЗУЧАЮ</h4>
               <div className={styles.investList}>
-                → shaders &amp; signed distance fields<br />
-                → rust / wasm pipelines<br />
-                → procedural sound (web audio)<br />
-                → spatial UI patterns
+                → шейдеры и SDF-графика<br />
+                → связка Rust + WebAssembly<br />
+                → процедурный звук (Web Audio)<br />
+                → паттерны пространственного UI
               </div>
             </div>
           </Panel>
@@ -96,10 +96,10 @@ export function About() {
       <section className={styles.section} id="timeline" style={{ position: 'relative' }}>
         <SectionHead
           index="05"
-          title="FIELD_LOG"
+          title="Мой Путь"
           jp="経歴 / タイムライン"
-          rightTop="FIRST ENTRY: 2023"
-          rightBottom="LATEST: 2026"
+          rightTop="Первый вход: 2023"
+          rightBottom="Крайний: 2026"
         />
 
         <div className={styles.timeline}>

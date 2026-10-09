@@ -38,9 +38,9 @@ export default function App() {
           <Contact />
         </main>
         <footer className={styles.foot}>
-          <span>LUNEV.N // PORTFOLIO v0x1A · 2026</span>
+          <span>LUNEV.N // PORTFOLIO · 2026</span>
           <span>BUILT WITH ВНИМАНИЕМ AND CAFFEINE</span>
-          <span>END OF TRANSMISSION ▓</span>
+          <span>END OF PORTFOLIO ▓</span>
         </footer>
       </div>
     </>

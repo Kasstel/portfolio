@@ -70,7 +70,7 @@ export function Hero() {
           <div className={styles.cta}>
             <TermButton href="#works">Посмотреть работы</TermButton>
             <TermButton href="#contact">Перейти к контактам</TermButton>
-            <TermButton href="https://kasstel.github.io/Kyarda/" external>Открыть демо проекта↗</TermButton>
+            <TermButton href="https://github.com/Kasstel" external>Открыть профиль github↗</TermButton>
           </div>
         </Panel>
 
@@ -78,11 +78,11 @@ export function Hero() {
         <div className={styles.side}>
           <Panel label="VITALS" className={styles.sideBlock}>
             <h4 className={styles.sideTitle}>SYS // VITALS</h4>
-            <div className={styles.row}><span>UPTIME</span><b>03y 142d</b></div>
-            <div className={styles.row}><span>PROJECTS</span><b>42</b></div>
-            <div className={styles.row}><span>COMMITS/y</span><b>1,248</b></div>
-            <div className={styles.row}><span>COFFEE/d</span><b>0x04</b></div>
-            <div className={styles.row}><span>BUG-RATE</span><b>LOW</b></div>
+            <div className={styles.row}><span>Время работы</span><b>03y 142d</b></div>
+            <div className={styles.row}><span>Проекты</span><b>42</b></div>
+            <div className={styles.row}><span>Коммиты</span><b>1,248</b></div>
+            <div className={styles.row}><span>Кофе</span><b>Значительное количество</b></div>
+            <div className={styles.row}><span>Вероятность багов</span><b>LOW</b></div>
           </Panel>
 
           <Panel label="SIGNAL" className={styles.sideBlock}>
