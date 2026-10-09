@@ -56,21 +56,21 @@ export function Projects() {
             title="KYARDA"
             description="Коммерческий сайт для производителя пиломатериалов «Кьярда»"
             tags={['REACT', 'REST API', 'CRM', 'LIVE ↗']}
-            videoSrc="/works/kyarda.mp4"
+            videoSrc={`${import.meta.env.BASE_URL}works/kyarda.mp4`}
             href="https://kasstel.github.io/Kyarda/"
           />
           <WorkCard index={1} size="md" number="№ 002" caseLabel="CASE-B"
             title="LOVE MAP"
             description="Интерактивная карта совместных воспоминаний для пары: метки с фото и категориями, счётчик дней вместе и два связанных аккаунта по инвайт-коду."
             tags={['MAP', 'PHOTO', 'INVITE-CODE']}
-            videoSrc="/works/loveMap.mp4"
+            videoSrc={`${import.meta.env.BASE_URL}works/loveMap.mp4`}
             href="https://kasstel.github.io/LoveMap/"
           />
           <WorkCard index={2} size="md" number="№ 003" year="2024" caseLabel="CASE-C"
             title="SKILLSWAP"
             description="SPA-платформа для обмена навыками: фильтрация, аутентификация, система заявок. Тимлид команды из 11 разработчиков, MVP за 3 недели."
             tags={['REACT', 'TS', 'FSD']}
-            videoSrc="/works/skillswap.mp4"
+            videoSrc={`${import.meta.env.BASE_URL}works/skillswap.mp4`}
             href="https://kasstel.github.io/SkillSwap/"
           />
         </div>

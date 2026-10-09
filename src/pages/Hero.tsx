@@ -4,6 +4,8 @@ import { Typewriter } from '../components/ui/Typewriter';
 import { PortraitCanvas } from '../components/hero/PortraitCanvas';
 import styles from './Hero.module.css';
 
+const PORTRAIT_SRC = `${import.meta.env.BASE_URL}portrait.jpg`;
+
 export function Hero() {
   return (
     <section className={styles.section} id="hero">
@@ -12,9 +14,9 @@ export function Hero() {
         {/* ─── PORTRAIT (left column) ─── */}
         <Panel label="SUBJECT.PORTRAIT" labelRight="A-034" className={styles.portrait}>
           {/* Drop your photo at /public/portrait.jpg */}
-          <PortraitCanvas className={styles.canvas} src="/portrait.jpg" />
+          <PortraitCanvas className={styles.canvas} src={PORTRAIT_SRC} />
           <img
-            src="/portrait.jpg"
+            src={PORTRAIT_SRC}
             alt=""
             className={styles.portraitPhoto}
             draggable={false}
